@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import logo from "../pictures/logo192.png";
 
 function SignUp() {
+  const navigate = useNavigate(); // Initialize navigate
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleSignUp = () => {
+
+    console.log("User signed up:", { name, email, password });
+    navigate("/login"); 
+  };
 
   return (
     <motion.div 
@@ -24,7 +33,7 @@ function SignUp() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Logo - Centered Between Sections */}
+        {/* Logo - Centered */}
         <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10">
           <motion.img 
             src={logo} 
@@ -40,10 +49,10 @@ function SignUp() {
           <p className="text-lg">Unlock endless possibilities with AI-powered quizzes</p>
           <ul className="mt-4 space-y-2 text-white text-md">
             <li>✔️ Generate quizzes instantly with AI</li>
-            <li>✔️ Customize & edit questions to fit your needs</li>
-            <li>✔️ Save & share quizzes effortlessly</li>
-            <li>✔️ Track your progress and improve</li>
-            <li>✔️ Interactive & engaging learning experience</li>
+            <li>✔️ Customize & edit questions</li>
+            <li>✔️ Save & share quizzes</li>
+            <li>✔️ Track your progress</li>
+            <li>✔️ Interactive & engaging learning</li>
           </ul>
         </div>
 
@@ -114,6 +123,7 @@ function SignUp() {
             <motion.button
               className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md mt-4 transition transform hover:scale-105"
               type="button"
+              onClick={handleSignUp} // Handle sign-up
               whileHover={{ scale: 1.05 }}
             >
               SIGN UP
@@ -121,7 +131,13 @@ function SignUp() {
           </form>
 
           <p className="text-gray-600 text-sm mt-4 text-center">
-            Already have an account? <a href="/" className="text-green-500 hover:text-green-700 transition">Login</a>
+            Already have an account?{" "}
+            <button 
+              onClick={() => navigate("/login")} 
+              className="text-green-500 hover:text-green-700 transition"
+            >
+              Login
+            </button>
           </p>
         </div>
       </motion.div>

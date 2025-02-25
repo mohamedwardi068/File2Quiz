@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion } from "framer-motion";
 import logo from "../pictures/logo192.png";
-
+import { useNavigate } from "react-router-dom"; 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate(); // Initialize navigate
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -103,13 +103,14 @@ function Login() {
               className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md mt-4 transition transform hover:scale-105"
               type="button"
               whileHover={{ scale: 1.05 }}
+              onClick={() => navigate("/")} 
             >
               LOGIN
             </motion.button>
           </form>
 
           <p className="text-gray-600 text-sm mt-4 text-center">
-            New user? <a href="aa" className="text-green-500 hover:text-green-700 transition">Sign Up</a>
+            New user? <a className="text-green-500 hover:text-green-700 transition" onClick={() => navigate("/signup")}>Sign Up</a>
           </p>
         </div>
       </motion.div>

@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
 import { motion } from "framer-motion"; // For smooth animations
 import logo from "../pictures/logo192.png";
+import { useNavigate } from "react-router";
 
 function Navbar() {
   const [user, setUser] = useState(null); // Replace with actual auth logic
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
+  const handleButton = () => {
 
+   
+    navigate("/login"); 
+  };
   return (
     <motion.nav
       className="flex items-center justify-between px-6 py-3 shadow-md bg-gradient-to-r from-gray-100 via-white to-gray-100"
@@ -76,7 +82,7 @@ function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <button className="block w-full px-4 py-2 text-left hover:bg-green-500 hover:text-white transition">
+                <button className="block w-full px-4 py-2 text-left hover:bg-green-500 hover:text-white transition"   onClick={() => navigate("/profile")} >
                   Profile
                 </button>
                 <button
@@ -93,12 +99,14 @@ function Navbar() {
             <motion.button
               className="bg-green-500 text-white px-4 py-1 rounded-l-full transition hover:bg-green-600"
               whileHover={{ scale: 1.05 }}
+              onClick={() => navigate("/signup")} 
             >
               Sign Up
             </motion.button>
             <motion.button
               className="bg-gray-100 px-4 py-1 rounded-r-full border-l border-gray-300 hover:bg-green-600 hover:border-green-600 hover:text-white transition"
               whileHover={{ scale: 1.05 }}
+              onClick={() => navigate("/login")} 
             >
               Log In
             </motion.button>

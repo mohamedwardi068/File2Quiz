@@ -1,45 +1,8 @@
 import React from 'react';
-import Select from 'react-select';
+
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaPinterest } from 'react-icons/fa';
 
-const customSingleValue = ({ data }) => (
-    <div className="flex items-center">
-      {data.icon && (
-        <img src={data.icon} alt="" className="w-4 h-4 rounded-full mr-1" />
-      )}
-      <span className="text-sm">{data.label}</span>
-    </div>
-);
 
-const customStyles = {
-    control: (provided) => ({
-      ...provided,
-      minHeight: '30px',
-      height: '30px',
-      fontSize: '12px'
-    }),
-    valueContainer: (provided) => ({
-      ...provided,
-      height: '30px',
-      padding: '0 6px'
-    }),
-    input: (provided) => ({
-      ...provided,
-      display: 'none',
-    }),
-    indicatorSeparator: () => ({
-      display: 'none',
-    }),
-    indicatorsContainer: (provided) => ({
-      ...provided,
-      height: '30px',
-    }),
-};
-
-const options = [
-    { value: 'eng', label: 'ENG', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/255px-Flag_of_the_United_Kingdom_%281-2%29.svg.png' },
-    { value: 'fra', label: 'FRA', icon: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/125px-Flag_of_France.svg.png' },
-];
 
 function Footer() {
     return (
