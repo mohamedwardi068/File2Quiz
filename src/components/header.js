@@ -1,9 +1,18 @@
-import React from 'react';
-import Select from 'react-select';
+import React from "react";
+import Select from "react-select";
+import { motion } from "framer-motion"; // Importing motion for animations
 
 const options = [
-  { value: 'eng', label: 'ENG', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/255px-Flag_of_the_United_Kingdom_%281-2%29.svg.png' },
-  { value: 'FRA', label: 'FRA', icon: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/125px-Flag_of_France.svg.png' },
+  {
+    value: "eng",
+    label: "ENG",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/255px-Flag_of_the_United_Kingdom_%281-2%29.svg.png",
+  },
+  {
+    value: "FRA",
+    label: "FRA",
+    icon: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/125px-Flag_of_France.svg.png",
+  },
 ];
 
 const customSingleValue = ({ data }) => (
@@ -18,49 +27,88 @@ const customSingleValue = ({ data }) => (
 const customStyles = {
   control: (provided) => ({
     ...provided,
-    minHeight: '30px',
-    height: '30px',
-    fontSize: '12px'
+    minHeight: "30px",
+    height: "30px",
+    fontSize: "12px",
+    borderRadius: "8px",
+    border: "1px solid #ddd",
+    boxShadow: "none",
+    transition: "all 0.2s ease-in-out",
+    "&:hover": {
+      border: "1px solid #555",
+    },
   }),
   valueContainer: (provided) => ({
     ...provided,
-    height: '30px',
-    padding: '0 6px'
+    height: "30px",
+    padding: "0 6px",
   }),
   input: (provided) => ({
     ...provided,
-    display: 'none',
+    display: "none",
   }),
   indicatorSeparator: () => ({
-    display: 'none',
+    display: "none",
   }),
   indicatorsContainer: (provided) => ({
     ...provided,
-    height: '30px',
+    height: "30px",
   }),
 };
 
 function Header() {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-white">
+    <motion.div
+      className="flex flex-col md:flex-row justify-between items-center p-4 bg-gradient-to-r from-gray-100 via-white to-gray-100 shadow-md"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* Hotline Section */}
       <div className="flex flex-col md:flex-row items-center mb-4 md:mb-0">
-        <span className="text-black bg-gray-300 text-sm rounded-lg pl-3 pr-2 pt-1 pb-1">Hotline 24/7</span>
-        <span className="ml-3  md:ml-3 font-bold text-gray-900 text-sm">(+126) 99-999-999</span>
+        <motion.span
+          className="text-black bg-gray-300 text-sm rounded-lg px-3 py-1"
+          whileHover={{ scale: 1.1 }}
+        >
+          Hotline 24/7
+        </motion.span>
+        <span className="ml-3 font-bold text-gray-900 text-sm">
+          (+126) 99-999-999
+        </span>
       </div>
+
+      {/* Navigation & Language Selector */}
       <div className="flex flex-col md:flex-row items-center">
-        <a   href="aaa" className="ml-0 md:ml-4 200 text-black text-sm font-medium">Start Quiz</a>
-        <a  href="aaa" className="ml-0 md:ml-4 hover:underline text-black text-sm font-medium">Support</a>
-        
-        <div className="ml-0 md:ml-4 mt-2 md:mt-0 w-20 h-8">
+        <motion.a
+          href="aaa"
+          className="ml-0 md:ml-4 text-black text-sm font-medium transition-all hover:text-green-600"
+          whileHover={{ scale: 1.1 }}
+        >
+          Start Quiz
+        </motion.a>
+
+        <motion.a
+          href="aaa"
+          className="ml-0 md:ml-4 text-black text-sm font-medium transition-all hover:text-green-600"
+          whileHover={{ scale: 1.1 }}
+        >
+          Support
+        </motion.a>
+
+        {/* Language Selector */}
+        <motion.div
+          className="ml-0 md:ml-4 mt-2 md:mt-0 w-20 h-8"
+          whileHover={{ scale: 1.05 }}
+        >
           <Select
             styles={customStyles}
             options={options}
             components={{ SingleValue: customSingleValue }}
             defaultValue={options[0]}
           />
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
