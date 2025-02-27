@@ -10,6 +10,7 @@ import SignUp from "./pages/signup.js";
 import Profile from "./components/profile.js";
 import Quizz from "./components/quiz.js";
 import FileUpload from "./components/fileUpload.js";
+import Popup from "./components/PopUp.js";
 
 
 
